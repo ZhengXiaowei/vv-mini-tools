@@ -15,3 +15,9 @@ type AxiosHeader = {
   toast?: boolean;
   [key: string]: any;
 };
+
+type AxiosResponse<T> = {
+  status: number;
+  msg: string;
+  result: T;
+};

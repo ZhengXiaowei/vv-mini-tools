@@ -5,8 +5,15 @@
 </template>
 
 <script>
-export default {
-  name: "Index",
-};
+import { cookSearch } from "@/api";
+import { defineComponent } from "vue";
+
+const Index = defineComponent({
+  setup() {
+    return {};
+  },
+});
+
+export default Index;
 </script>
 
