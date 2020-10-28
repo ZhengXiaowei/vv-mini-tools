@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '首页'
-}
+  navigationBarTitleText: "小vv工具集 - vvTools",
+};

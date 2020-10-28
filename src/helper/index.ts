@@ -1,5 +1,6 @@
 import Taro from "@tarojs/taro";
 import store from "@/store";
+import { WeekText } from "./enum";
 
 /**
  * 判断请求接口是否命中缓存
@@ -25,4 +26,13 @@ export const resCache = (data: any, config: Taro.RequestParams) => {
     const urlKey: string = config.url;
     resTarget ?? store.state.system.cache.put(urlKey, data);
   }
+};
+
+/**
+ * 今天是周五吗？
+ */
+
+export const isFridayToday = (): string => {
+  const weekDay = new Date().getDay();
+  return WeekText[`周${weekDay}`];
 };

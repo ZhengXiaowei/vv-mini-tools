@@ -3,57 +3,62 @@ $namespace: "page-home";
 @include b(wrap) {
   height: 100vh;
   padding: 40px;
+  background: url(http://normal-image.xiaovv-web.com/normal/2020-10-28-bg-home2.jpg)
+    no-repeat top left / cover;
   box-sizing: border-box;
-  @include flex($space: flex-start, $direction: column);
 
-  .header-wrap {
-    width: 100%;
-    @include flex();
+  .is-friday {
+    margin: 140px 0;
 
-    .user {
-      font-size: $--font-size-bigger;
-      color: #030303;
-      @include flex($space: flex-start);
-
-      image {
-        margin-right: 28px;
-      }
+    .question {
+      color: #1a1c20;
+      font-size: 48px;
+      font-weight: bold;
+      transform: rotateZ(-45deg);
     }
 
-    image {
-      width: 64px;
-      height: 64px;
+    .answer {
+      line-height: 1;
+      margin-top: 50px;
+      margin-left: 100px;
+      @include flex($space: flex-start, $align: flex-start, $direction: column);
+
+      text {
+        font-weight: bold;
+
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 
-  .scanner-wrap {
-    flex: 1;
-    width: 100%;
+  .nav-wrap {
+    width: 90%;
+    margin: 0 auto;
+    flex-flow: row wrap;
+    @include flex($space: flex-start);
+  }
+
+  .nav-item {
+    width: 50%;
     font-size: 0;
-    @include flex($space: center);
+    text-align: center;
+
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      margin-bottom: 40px;
+    }
 
     image {
-      width: 300px;
-      height: 300px;
-    }
-  }
-
-  .swipe-wrap {
-    width: 100%;
-    height: 400px;
-    border-radius: 24px;
-    box-shadow: 0 8px 24px 0 rgba(255, 127, 22, 0.2);
-    overflow: hidden;
-
-    swiper {
-      height: 400px;
+      width: 160px;
+      height: 160px;
+      margin-bottom: 15px;
     }
 
-    swiper-item {
-      image {
-        width: 100%;
-        height: 100%;
-      }
+    view {
+      font-size: 28px;
+      color: #323232;
     }
   }
 }
