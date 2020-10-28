@@ -1,0 +1,59 @@
+$namespace: "page-home";
+
+@include b(wrap) {
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  @include flex($space: flex-start, $direction: column);
+
+  .header-wrap {
+    width: 100%;
+    @include flex();
+
+    .user {
+      font-size: $--font-size-bigger;
+      color: #030303;
+      @include flex($space: flex-start);
+
+      image {
+        margin-right: 28px;
+      }
+    }
+
+    image {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .scanner-wrap {
+    flex: 1;
+    width: 100%;
+    font-size: 0;
+    @include flex($space: center);
+
+    image {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  .swipe-wrap {
+    width: 100%;
+    height: 400px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px 0 rgba(255, 127, 22, 0.2);
+    overflow: hidden;
+
+    swiper {
+      height: 400px;
+    }
+
+    swiper-item {
+      image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.empty-wrap {
+  font-size: 0;
+  padding-top: 200px;
+  @include flex($direction: column, $space: flex-start);
+
+  image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 32px;
+  }
+
+  text {
+    font-size: $--font-size-medium;
+    color: #777;
+  }
+}

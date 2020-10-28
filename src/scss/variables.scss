@@ -1,0 +1,38 @@
+// 导入一些常用mixin
+@import "./mixins.scss";
+
+$--color-theme: #ff6200 !default;
+$--color-theme-boy: #32a1ff !default;
+$--color-theme-boy-light: #eff8ff !default;
+$--color-theme-boy-person: #e3f3ff !default;
+$--color-theme-boy-transparent: #dde8f1 !default;
+$--color-theme-girl: #ef5952 !default;
+$--color-theme-girl-light: #fff2f2 !default;
+$--color-theme-girl-transparent: #f2d5da !default;
+
+$--color-recommend-btn-font: #215378 !default;
+$--color-recommend-btn-bg: #c5e3ff !default;
+$--color-recommend-btn-shadow: rgba(#999, 0.29) !default;
+$--color-recommend-headline-font: #455860 !default;
+$--color-recommend-headline-bg: #b2daff !default;
+
+$--color-border: #e6e6e6 !default;
+
+$--edge-view: 12px;
+
+$--radius: 3px;
+
+$--font-size-tiny: 20px !default;
+$--font-size-small: 24px !default;
+$--font-size-base: 26px !default;
+$--font-size-medium: 28px !default;
+$--font-size-big: 30px !default;
+$--font-size-bigger: 32px !default;
+$--font-size-large: 36px !default;
+
+$--font-color-dark: #333 !default;
+$--font-color-medium: #666 !default;
+$--font-color-light: #999 !default;
+
+$--book-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+$--book-radius: $--radius;

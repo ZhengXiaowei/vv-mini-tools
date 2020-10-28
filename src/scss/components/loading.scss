@@ -1,0 +1,69 @@
+.loading-wrap {
+  @include flex($space: center);
+
+  .loading-text {
+    font-size: $--font-size-small;
+    color: $--font-color-light;
+    margin-left: 20px;
+  }
+}
+
+.loading-grid {
+  width: 40px;
+  height: 40px;
+
+  .loading-cube {
+    width: 33%;
+    height: 33%;
+    background-color: $--color-theme;
+    float: left;
+    animation: loading 1.3s infinite ease-in-out;
+  }
+
+  .loading-cube1 {
+    animation-delay: 0.2s;
+  }
+
+  .loading-cube2 {
+    animation-delay: 0.3s;
+  }
+
+  .loading-cube3 {
+    animation-delay: 0.4s;
+  }
+
+  .loading-cube4 {
+    animation-delay: 0.1s;
+  }
+
+  .loading-cube5 {
+    animation-delay: 0.2s;
+  }
+
+  .loading-cube6 {
+    animation-delay: 0.3s;
+  }
+
+  .loading-cube7 {
+    animation-delay: 0s;
+  }
+
+  .loading-cube8 {
+    animation-delay: 0.1s;
+  }
+
+  .loading-cube9 {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes loading {
+  0%,
+  70%,
+  100% {
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    transform: scale3D(0, 0, 1);
+  }
+}

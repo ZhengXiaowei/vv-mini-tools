@@ -1,0 +1,133 @@
+$namespace: "page-consume";
+
+@include b(wrap) {
+  .consume-list {
+    min-height: 100vh;
+    background: #f7f7f7;
+    box-sizing: border-box;
+    padding: 24px 40px;
+  }
+
+  .consume-item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  .consume-item__time {
+    @include flex();
+    font-size: $--font-size-small;
+    color: #777;
+    margin-bottom: 24px;
+  }
+
+  .consume-item__card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .card-line {
+      padding: 32px 28px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #f7f7f7;
+      }
+    }
+
+    .card-line__text {
+      line-height: 1;
+      margin-bottom: 16px;
+      @include flex();
+
+      text {
+        font-size: $--font-size-small;
+        color: #777;
+      }
+
+      .strong {
+        font-size: $--font-size-bigger;
+        color: #030303;
+      }
+    }
+  }
+}
+
+$namespace: "page-consume-detail";
+
+@include b(wrap) {
+  .card-status {
+    position: relative;
+
+    image {
+      width: 100%;
+    }
+
+    .card-number {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-90%, -50%);
+      color: #fff;
+
+      text {
+        font-size: $--font-size-medium;
+      }
+    }
+
+    .money {
+      line-height: 1;
+      margin-bottom: 8px;
+
+      text {
+        font-weight: bold;
+        font-size: 96px;
+
+        &:first-child {
+          font-size: 48px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  .card-info,
+  .device-info {
+    padding: 0 60px 12px;
+    border-bottom: 1px solid #f7f7f7;
+
+    .card-info__item {
+      font-size: $--font-size-medium;
+      color: #030303;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      @include flex($space: flex-start, $align: flex-start);
+
+      text {
+        flex-shrink: 0;
+      }
+
+      .label {
+        color: #777;
+        margin-right: 48px;
+      }
+
+      .info {
+        flex: 1;
+      }
+    }
+  }
+
+  .device-info {
+    padding-top: 34px;
+
+    .info {
+      text {
+        display: block;
+
+        &:last-child {
+          color: #777;
+        }
+      }
+    }
+  }
+}
