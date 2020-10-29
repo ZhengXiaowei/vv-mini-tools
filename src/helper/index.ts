@@ -36,3 +36,13 @@ export const isFridayToday = (): string => {
   const weekDay = new Date().getDay();
   return WeekText[`周${weekDay}`];
 };
+
+/**
+ * 判断是否处于晚上
+ */
+export const isNight = (): boolean => {
+  const hour = new Date().getHours();
+  let is_night = true;
+  if (hour > 6 && hour < 18) is_night = false;
+  return is_night;
+};

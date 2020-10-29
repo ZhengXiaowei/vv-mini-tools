@@ -12,4 +12,9 @@ export default {
     navigationBarTitleText: "WeChat",
     navigationBarTextStyle: "black",
   },
+  permission: {
+    "scope.userLocation": {
+      desc: "你的位置信息将用于平台端展示",
+    },
+  },
 };

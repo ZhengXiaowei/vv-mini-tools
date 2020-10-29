@@ -132,3 +132,30 @@ export interface DrivingQuestion {
   type: string;
   chapter: string;
 }
+
+// 天气
+export interface WeatherInfo {
+  city: string;
+  date: string;
+  week: string;
+  weather: string;
+  img: string;
+  temphigh: string;
+  templow: string;
+  humidity: string;
+  daily: WeatherDailyInfo[];
+}
+
+export interface WeatherDailyInfo {
+  date: string;
+  week: string;
+  day: WeatherDay;
+}
+
+export interface WeatherDay {
+  weather: string;
+  temphigh: string;
+  img: string;
+  winddirect: string;
+  windpower: string;
+}

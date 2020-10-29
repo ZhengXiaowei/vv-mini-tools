@@ -1,3 +1,4 @@
+import { WeatherInfo } from "@/types/api";
 import { isDate, isObject } from "./utils";
 
 const encode = (value: string): string => {
@@ -46,4 +47,23 @@ export const formatURL = (url: string, params?: any): string => {
     url += (url.indexOf("?") !== -1 ? "&" : "?") + serialization;
   }
   return url;
+};
+
+/**
+ * 格式化天气数据
+ * @param weather 天气信息
+ * @param future 未来几天
+ */
+export const formatWeatherInfo = (weather: WeatherInfo, future: number = 7) => {
+  return {
+    weather: weather.weather,
+    date: weather.date,
+    city: weather.city,
+    week: weather.week,
+    icon: weather.img,
+    temperature_high: weather.temphigh,
+    temperature_lower: weather.templow,
+    humidity: weather.humidity,
+    daily: weather.daily.slice(1, future + 1),
+  };
 };

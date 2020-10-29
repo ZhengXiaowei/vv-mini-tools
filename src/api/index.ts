@@ -8,6 +8,7 @@ import {
   QuestionAnswer,
   Driving,
   DrivingQuery,
+  WeatherInfo,
 } from "@/types/api";
 
 /**
@@ -91,4 +92,17 @@ export const getDrivingLicenseQuestion = (
   }
 ) => {
   return axios.post<Driving>("/driverexam/query", { params: query });
+};
+
+/**
+ * 天气信息
+ * TODO 城市id先写死
+ */
+export const getWeatherInfo = () => {
+  return axios.post<WeatherInfo>("/weather/query", {
+    params: {
+      cityid: 3232,
+    },
+    header: { toast: false },
+  });
 };

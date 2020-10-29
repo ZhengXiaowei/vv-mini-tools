@@ -2,63 +2,81 @@ $namespace: "page-home";
 
 @include b(wrap) {
   height: 100vh;
-  padding: 40px;
-  background: url(http://normal-image.xiaovv-web.com/normal/2020-10-28-bg-home2.jpg)
-    no-repeat top left / cover;
+  position: relative;
   box-sizing: border-box;
 
-  .is-friday {
-    margin: 140px 0;
+  .weather-info {
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-    .question {
-      color: #1a1c20;
+  .light {
+    background-image: url(http://normal-image.xiaovv-web.com/normal/2020-10-29-bg-light.jpeg);
+  }
+
+  .night {
+    background-image: url(http://normal-image.xiaovv-web.com/normal/2020-10-29-bg-night.jpeg);
+  }
+
+  .weather-triangle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-width: 25vh 100vw 0 0;
+    border-color: transparent #fff #fff transparent;
+    border-style: solid;
+    z-index: 9;
+  }
+
+  .weather-title {
+    position: absolute;
+    left: 24px;
+    bottom: 120px;
+    width: 180px;
+    line-height: 1;
+    font-size: 180px;
+    font-family: "Cursive";
+    color: #fff;
+  }
+
+  .weather-area {
+    position: absolute;
+    left: 24px;
+    line-height: 1;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    @include flex();
+  }
+
+  .weather-temperature {
+    position: absolute;
+    left: 228px;
+    bottom: 18vh;
+    // width: 180px;
+    line-height: 1;
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .today {
+    position: absolute;
+    right: 24px;
+    bottom: 0vh;
+    font-size: 36px;
+    color: #333;
+    z-index: 10;
+    text-align: right;
+
+    .today-text {
+      margin-top: 20px;
       font-size: 48px;
       font-weight: bold;
-      transform: rotateZ(-45deg);
-    }
-
-    .answer {
-      line-height: 1;
-      margin-top: 50px;
-      margin-left: 100px;
-      @include flex($space: flex-start, $align: flex-start, $direction: column);
-
-      text {
-        font-weight: bold;
-
-        &:first-child {
-          margin-bottom: 10px;
-        }
-      }
-    }
-  }
-
-  .nav-wrap {
-    width: 90%;
-    margin: 0 auto;
-    flex-flow: row wrap;
-    @include flex($space: flex-start);
-  }
-
-  .nav-item {
-    width: 50%;
-    font-size: 0;
-    text-align: center;
-
-    &:nth-of-type(1),
-    &:nth-of-type(2) {
-      margin-bottom: 40px;
-    }
-
-    image {
-      width: 160px;
-      height: 160px;
-      margin-bottom: 15px;
-    }
-
-    view {
-      font-size: 28px;
-      color: #323232;
+      font-family: "Jin Yue";
     }
   }
 }
