@@ -61,6 +61,7 @@ export const formatWeatherInfo = (weather: WeatherInfo, future: number = 7) => {
     city: weather.city,
     week: weather.week,
     icon: weather.img,
+    temperature: weather.temp,
     temperature_high: weather.temphigh,
     temperature_lower: weather.templow,
     humidity: weather.humidity,

@@ -1,9 +1,23 @@
 $namespace: "page-home";
 
 @include b(wrap) {
+  position: fixed;
+  width: 100vw;
   height: 100vh;
-  position: relative;
+  left: 0vw;
+  background: #f1f1f1;
+  // position: relative;
   box-sizing: border-box;
+  transition: all 0.5s;
+
+  &.opened {
+    transform: scale(0.9, 0.9);
+    left: -45vw;
+    box-shadow: 0 0 60rpx rgba(0, 0, 0, 0.2);
+    transform-origin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 
   .weather-info {
     height: 70vh;
@@ -26,7 +40,7 @@ $namespace: "page-home";
     width: 0;
     height: 0;
     border-width: 25vh 100vw 0 0;
-    border-color: transparent #fff #fff transparent;
+    border-color: transparent #f1f1f1 #f1f1f1 transparent;
     border-style: solid;
     z-index: 9;
   }
@@ -76,7 +90,96 @@ $namespace: "page-home";
       margin-top: 20px;
       font-size: 48px;
       font-weight: bold;
-      font-family: "Jin Yue";
+      font-family: "River";
     }
+  }
+
+  .menu-btn {
+    position: absolute;
+    top: 50vh;
+    right: 5vw;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 11;
+    color: #fff;
+    background: linear-gradient(45deg, #0081ff, #1cbbb4);
+    @include flex($space: center);
+  }
+}
+
+$namespace: "page-menu";
+
+@include b(wrap) {
+  position: absolute;
+  width: 50vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  transform: scale(0.9, 0.9) translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s;
+  padding: 0 40px 40px 0;
+  box-sizing: border-box;
+
+  &.opened {
+    transform: scale(1, 1) translateX(0%);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .menu-content {
+    height: 100%;
+    @include flex($space: center, $direction: column);
+
+    image {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    view {
+      font-size: 28px;
+    }
+
+    .menu-item {
+      font-size: 0;
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: "River";
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
+
+@include b(close) {
+  position: absolute;
+  width: 40vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  color: transparent;
+  padding-bottom: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 0.01),
+    rgba(0, 0, 0, 0.6)
+  );
+  letter-spacing: 10px;
+  font-size: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s;
+
+  &.opened {
+    opacity: 1;
+    pointer-events: all;
+    width: 45vw;
+    color: #fff;
   }
 }

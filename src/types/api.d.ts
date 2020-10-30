@@ -140,6 +140,7 @@ export interface WeatherInfo {
   week: string;
   weather: string;
   img: string;
+  temp: string;
   temphigh: string;
   templow: string;
   humidity: string;
