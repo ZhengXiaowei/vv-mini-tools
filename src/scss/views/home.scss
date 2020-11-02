@@ -58,7 +58,8 @@ $namespace: "page-home";
 
   .weather-area {
     position: absolute;
-    left: 24px;
+    left: 30px;
+    bottom: 14vh;
     line-height: 1;
     font-size: 48px;
     font-weight: bold;
@@ -66,15 +67,50 @@ $namespace: "page-home";
     @include flex();
   }
 
+  .weather-icon {
+    position: absolute;
+    right: 40px;
+    top: 5vh;
+    // width: 320px;
+    // height: 320px;
+    z-index: 12;
+  }
+
   .weather-temperature {
     position: absolute;
-    left: 228px;
-    bottom: 18vh;
+    left: 30px;
+    bottom: 8vh;
     // width: 180px;
     line-height: 1;
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 80px;
+    // font-weight: bold;
     color: #fff;
+  }
+
+  .weather-future-wrap {
+    height: 30vh;
+    @include flex();
+
+    .weather-future-item {
+      @include flex($direction: column, $space: center);
+    }
+  }
+
+  .weather-dress-recommend {
+    position: absolute;
+    left: 30px;
+    top: 20vh;
+    height: 400px;
+    writing-mode: vertical-lr;
+    font-size: 28px;
+    color: #333;
+    opacity: 0.6;
+
+    .weather-dress-title {
+      font-size: 40px;
+      font-weight: bold;
+      display: block;
+    }
   }
 
   .today {
@@ -96,15 +132,19 @@ $namespace: "page-home";
 
   .menu-btn {
     position: absolute;
-    top: 50vh;
-    right: 5vw;
-    width: 80px;
-    height: 80px;
+    top: 46vh;
+    right: 10vw;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     z-index: 11;
     color: #fff;
-    background: linear-gradient(45deg, #0081ff, #1cbbb4);
+    // background: linear-gradient(45deg, #0081ff, #1cbbb4);
     @include flex($space: center);
+
+    text {
+      font-size: 50px;
+    }
   }
 }
 

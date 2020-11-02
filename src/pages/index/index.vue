@@ -2,16 +2,36 @@
   <view :class="['page-home-wrap', {'opened': menuOpen}]">
     <view :class="['weather-info weather', pageBg]">
       <view class="weather-triangle"></view>
-      <view class="weather-title">{{weather.weather}}</view>
-      <view class="weather-area"
-            :style="areaStyle">{{weather.city}}</view>
+      <!-- <view class="weather-title">{{weather.weather}}</view> -->
+      <view class="weather-area">{{weather.city}}</view>
       <view class="weather-temperature">{{weather.temperature}}℃</view>
+      <view class="weather-icon"
+            v-if="weather.icon">
+        <weather-icon-wrap :icon="weather.icon" />
+      </view>
+      <view class="weather-dress-recommend"
+            v-if="weather_dress_rec">
+        <text class="weather-dress-title">{{weather_dress_rec.iname}}</text>
+        <text>{{weather_dress_rec.detail}}</text>
+      </view>
       <view class="today">
         <view>今天是周五吗</view>
         <view class="today-text">{{dayText}}</view>
       </view>
-      <view class="menu-btn"
-            @tap="menuOpen = true">+</view>
+      <view class="menu-btn shadow bg-black"
+            @tap="menuOpen = true">
+        <text class="cuIcon-apps"></text>
+      </view>
+    </view>
+    <view class="weather-future-wrap">
+      <view class="weather-future-item"
+            v-for="future in weather.daily"
+            :key="future.date">
+        <text>{{future.week}}</text>
+        <weather-icon-wrap size="120"
+                           :icon="future.icon" />
+        <text>{{future.temperature}}℃</text>
+      </view>
     </view>
   </view>
   <view :class="['page-menu-close', {'opened': menuOpen}]"
@@ -34,13 +54,18 @@
 import Taro from "@tarojs/taro";
 import { defineComponent, inject, reactive, toRefs } from "vue";
 
+import WeatherIconWrap from "@/components/weather-icon/index.vue";
+
+import { getWeatherInfo } from "@/api";
 import { isFridayToday } from "@/helper";
 import { formatWeatherInfo } from "@/helper/format";
 import { NavList } from "@/helper/page-config";
-import { getWeatherInfo } from "@/api";
 import { AppData } from "@/types/app";
 
 const Index = defineComponent({
+  components: {
+    WeatherIconWrap,
+  },
   setup() {
     const app = inject<AppData>("app");
 
@@ -54,12 +79,14 @@ const Index = defineComponent({
       dayText: isFridayToday(),
       menuOpen: false,
       weather: {},
+      weather_dress_rec: {},
     });
 
     // 天气
     getWeatherInfo().then(({ result }) => {
-      let weather = formatWeatherInfo(result, 3);
+      let weather = formatWeatherInfo(result);
       data.weather = weather;
+      data.weather_dress_rec = weather.index[0];
     });
 
     // 导航

@@ -7,6 +7,7 @@ export default {
     "pages/ai/index",
   ],
   window: {
+    navigationStyle: "custom",
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
     navigationBarTitleText: "WeChat",

@@ -5,3 +5,8 @@ export const isDate = (value: any): value is Date =>
 
 export const isObject = (value: any): value is Object =>
   String.call(value) === "[object Object]";
+
+export const isNumberType = (value: any): value is Number => {
+  const formatValue = +value;
+  return !isNaN(formatValue);
+};

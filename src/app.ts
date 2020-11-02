@@ -5,6 +5,8 @@ import store from "./store";
 import { isNight } from "./helper/index";
 import { AppData } from "./types/app";
 
+import "./colorui/main.scss";
+import "./colorui/icon.scss";
 import "./scss/index.scss";
 
 let app: AppData = {

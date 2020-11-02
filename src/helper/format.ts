@@ -1,4 +1,5 @@
-import { WeatherInfo } from "@/types/api";
+import { WeatherDailyInfo, WeatherInfo } from "@/types/api";
+import { WeatherIcon } from "./enum";
 import { isDate, isObject } from "./utils";
 
 const encode = (value: string): string => {
@@ -55,16 +56,32 @@ export const formatURL = (url: string, params?: any): string => {
  * @param future 未来几天
  */
 export const formatWeatherInfo = (weather: WeatherInfo, future: number = 7) => {
+  const weather_icon_prefix = "weather_icon_";
+
   return {
     weather: weather.weather,
     date: weather.date,
     city: weather.city,
     week: weather.week,
-    icon: weather.img,
+    icon: WeatherIcon[weather_icon_prefix + weather.img],
     temperature: weather.temp,
     temperature_high: weather.temphigh,
     temperature_lower: weather.templow,
     humidity: weather.humidity,
-    daily: weather.daily.slice(1, future + 1),
+    index: weather.index.slice(weather.index.length - 1),
+    daily: weather.daily
+      .slice(1, future + 1)
+      .map((day) => formatWeatherDailyInfo(day)),
+  };
+};
+
+const formatWeatherDailyInfo = (daily: WeatherDailyInfo) => {
+  const weather_icon_prefix = "weather_icon_";
+
+  return {
+    date: daily.date,
+    week: daily.week,
+    icon: WeatherIcon[weather_icon_prefix + daily.day.img],
+    temperature: daily.day.temphigh,
   };
 };

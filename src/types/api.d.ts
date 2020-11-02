@@ -145,6 +145,7 @@ export interface WeatherInfo {
   templow: string;
   humidity: string;
   daily: WeatherDailyInfo[];
+  index: WeatherIndex[];
 }
 
 export interface WeatherDailyInfo {
@@ -159,4 +160,10 @@ export interface WeatherDay {
   img: string;
   winddirect: string;
   windpower: string;
+}
+
+export interface WeatherIndex {
+  iname: string;
+  ivalue: string;
+  detail: string;
 }
