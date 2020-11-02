@@ -106,6 +106,10 @@ $namespace: "page-home";
     color: #333;
     opacity: 0.6;
 
+    &.night-text {
+      color: #fff;
+    }
+
     .weather-dress-title {
       font-size: 40px;
       font-weight: bold;

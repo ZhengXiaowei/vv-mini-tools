@@ -59,13 +59,14 @@ export const getCooksInfo = (id: number) => {
  * @param number 订单号
  * @param mobile 手机号 顺丰需要
  */
-export const findExpress = (number: number, mobile?: number) => {
+export const findExpress = (number: string, mobile?: string) => {
   return axios.post<Express>("/express/query", {
     params: {
       type: "auto",
       number,
       mobile,
     },
+    header: { toast: false },
   });
 };
 

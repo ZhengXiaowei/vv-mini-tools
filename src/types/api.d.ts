@@ -69,8 +69,13 @@ export interface Express {
 }
 
 export interface ExpressItem {
-  time: string;
-  status: string;
+  time?: string;
+  status?: string;
+  date?: string;
+  year?: string;
+  month?: string;
+  time_info?: string;
+  children?: ExpressItem[];
 }
 
 // Ask Question
@@ -152,11 +157,13 @@ export interface WeatherDailyInfo {
   date: string;
   week: string;
   day: WeatherDay;
+  night: WeatherDay;
 }
 
 export interface WeatherDay {
   weather: string;
   temphigh: string;
+  templow: string;
   img: string;
   winddirect: string;
   windpower: string;

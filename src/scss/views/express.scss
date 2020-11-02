@@ -1,0 +1,33 @@
+$namespace: "page-express";
+
+@include b(wrap) {
+  height: 20vh;
+}
+
+@include b(progress) {
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+
+  .express-name {
+    @include flex($space: center);
+
+    image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    text {
+      font-size: 32px;
+      color: #333;
+    }
+  }
+
+  .progress-list {
+    .cu-time-wrap {
+      @include flex($direction: column, $space: center);
+    }
+  }
+}

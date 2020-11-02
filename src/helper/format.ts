@@ -1,6 +1,8 @@
-import { WeatherDailyInfo, WeatherInfo } from "@/types/api";
+import { inject } from "vue";
+import { ExpressItem, WeatherDailyInfo, WeatherInfo } from "@/types/api";
 import { WeatherIcon } from "./enum";
 import { isDate, isObject } from "./utils";
+import { AppData } from "@/types/app";
 
 const encode = (value: string): string => {
   return encodeURIComponent(value)
@@ -55,7 +57,7 @@ export const formatURL = (url: string, params?: any): string => {
  * @param weather 天气信息
  * @param future 未来几天
  */
-export const formatWeatherInfo = (weather: WeatherInfo, future: number = 7) => {
+export const formatWeatherInfo = (weather: WeatherInfo, night = false) => {
   const weather_icon_prefix = "weather_icon_";
 
   return {
@@ -70,18 +72,78 @@ export const formatWeatherInfo = (weather: WeatherInfo, future: number = 7) => {
     humidity: weather.humidity,
     index: weather.index.slice(weather.index.length - 1),
     daily: weather.daily
-      .slice(1, future + 1)
-      .map((day) => formatWeatherDailyInfo(day)),
+      .slice(1, 7)
+      .map((day) => formatWeatherDailyInfo(day, night)),
   };
 };
 
-const formatWeatherDailyInfo = (daily: WeatherDailyInfo) => {
+const formatWeatherDailyInfo = (daily: WeatherDailyInfo, night = false) => {
   const weather_icon_prefix = "weather_icon_";
+
+  let icon = WeatherIcon[weather_icon_prefix + daily.day.img];
+  let temp = daily.day.temphigh;
+
+  if (night) {
+    icon = WeatherIcon[weather_icon_prefix + daily.night.img];
+    temp = daily.night.templow;
+  }
 
   return {
     date: daily.date,
     week: daily.week,
-    icon: WeatherIcon[weather_icon_prefix + daily.day.img],
-    temperature: daily.day.temphigh,
+    icon: icon,
+    temperature: temp,
   };
+};
+
+/**
+ * 格式化快递接口数据
+ * @param progress
+ */
+export const formatExpressProgressList = (progress: ExpressItem[]) => {
+  const new_progress = progress.slice(0);
+  new_progress.forEach((p) => {
+    const date = p.time!.split(" ");
+    const year = date[0].split("-")[0];
+    const month = date[0].split("-").slice(1).join("-");
+    const time_info = date[1];
+    p.date = date[0];
+    p.year = year;
+    p.month = month;
+    p.time_info = time_info;
+  });
+
+  // 分组数据
+  const groupResult = groupArrayByName<ExpressItem>(new_progress, (item) => [
+    item.date,
+  ]);
+
+  // 再做一次格式化 把二维数组转换成一维数组
+  const result = groupResult.map((gr) => {
+    const first = gr[0];
+    return {
+      year: first.year,
+      month: first.month,
+      children: gr,
+    };
+  });
+
+  return result;
+};
+
+/**
+ * 通过指定name分组数组
+ * @param arr
+ * @param fn
+ */
+const groupArrayByName = <T>(arr: T[], fn: Function) => {
+  const groups = {};
+  arr.forEach(function (o) {
+    const group = JSON.stringify(fn(o));
+    groups[group] = groups[group] || [];
+    groups[group].push(o);
+  });
+  return Object.keys(groups).map(function (group) {
+    return groups[group];
+  });
 };
