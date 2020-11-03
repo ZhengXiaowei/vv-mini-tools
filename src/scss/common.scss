@@ -28,3 +28,12 @@ image {
   z-index: 99;
   background: rgba($color: #fff, $alpha: 0.6);
 }
+
+.fix-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  color: #fff;
+}

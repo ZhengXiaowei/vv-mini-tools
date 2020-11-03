@@ -1,0 +1,113 @@
+$namespace: "page-ai";
+
+@include b(wrap) {
+  position: relative;
+  font-size: 0;
+  padding: 240px 20px 100px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .gif-wave {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100vw;
+    height: 200px;
+    mix-blend-mode: screen;
+  }
+
+  .start-notice {
+    font-size: 28px;
+    color: #fff;
+  }
+}
+
+@include b(voice) {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 60px;
+  line-height: 128px;
+  text-align: center;
+  z-index: 99;
+
+  &.button-hover {
+    transform: translate(-49%, 1%);
+  }
+}
+
+@include b(start-bg) {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transition: all 0.5s;
+  transform: translate(-50%, 0);
+  transform-origin: bottom;
+  z-index: 98;
+  background: rgba($color: #000, $alpha: 0.8);
+
+  &.is-active {
+    bottom: 0vh;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(0, 0);
+    border-radius: 0;
+
+    .top-line,
+    .bottom-line {
+      animation: in-progress 0.5s infinite;
+      animation-delay: 0.5s;
+    }
+
+    .in-progress-loading {
+      transition-delay: 0.6s;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .top-line,
+  .bottom-line {
+    position: absolute;
+    left: 50%;
+    height: 8px;
+    width: 0%;
+    margin: 0 auto;
+    transform: translate(-50%, 0);
+  }
+
+  .top-line {
+    top: 0;
+  }
+
+  .bottom-line {
+    bottom: 0;
+  }
+
+  .in-progress-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 0.5s;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+@keyframes in-progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
