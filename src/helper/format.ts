@@ -1,8 +1,5 @@
-import { inject } from "vue";
 import { ExpressItem, WeatherDailyInfo, WeatherInfo } from "@/types/api";
-import { WeatherIcon } from "./enum";
 import { isDate, isObject } from "./utils";
-import { AppData } from "@/types/app";
 
 const encode = (value: string): string => {
   return encodeURIComponent(value)
@@ -58,14 +55,14 @@ export const formatURL = (url: string, params?: any): string => {
  * @param future 未来几天
  */
 export const formatWeatherInfo = (weather: WeatherInfo, night = false) => {
-  const weather_icon_prefix = "weather_icon_";
+  const weather_icon_prefix = "http://normal-image.xiaovv-web.com/";
 
   return {
     weather: weather.weather,
     date: weather.date,
     city: weather.city,
     week: weather.week,
-    icon: WeatherIcon[weather_icon_prefix + weather.img],
+    icon: weather_icon_prefix + `${weather.img}.svg`,
     temperature: weather.temp,
     temperature_high: weather.temphigh,
     temperature_lower: weather.templow,
@@ -78,13 +75,13 @@ export const formatWeatherInfo = (weather: WeatherInfo, night = false) => {
 };
 
 const formatWeatherDailyInfo = (daily: WeatherDailyInfo, night = false) => {
-  const weather_icon_prefix = "weather_icon_";
+  const weather_icon_prefix = "http://normal-image.xiaovv-web.com/";
 
-  let icon = WeatherIcon[weather_icon_prefix + daily.day.img];
+  let icon = weather_icon_prefix + `${daily.day.img}.svg`;
   let temp = daily.day.temphigh;
 
   if (night) {
-    icon = WeatherIcon[weather_icon_prefix + daily.night.img];
+    icon = weather_icon_prefix + `night-${daily.night.img}.svg`;
     temp = daily.night.templow;
   }
 

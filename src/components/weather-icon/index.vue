@@ -1,6 +1,8 @@
 <template>
-  <view class="weather-icon-wrap"
-        :style="iconStyle"></view>
+  <view class="weather-icon-wrap">
+    <image :src="icon"
+           :style="iconStyle" />
+  </view>
 </template>
 
 <script lang="ts">
@@ -12,11 +14,11 @@ const WeatherIconWrap = defineComponent({
   props: {
     size: {
       type: [Number, String],
-      default: 320,
+      default: 350,
     },
-    scale: {
-      type: [Number, String],
-      default: 2,
+    night: {
+      type: Boolean,
+      default: false,
     },
     icon: {
       type: String,
@@ -29,8 +31,6 @@ const WeatherIconWrap = defineComponent({
     const iconStyle = reactive({
       width: isNumberSize ? `${props.size}rpx` : props.size,
       height: isNumberSize ? `${props.size}rpx` : props.size,
-      backgroundSize: `${+props.scale * 100}%`,
-      backgroundImage: `url(${props.icon})`,
     });
 
     return {
@@ -44,7 +44,6 @@ export default WeatherIconWrap;
 
 <style lang="scss">
 .weather-icon-wrap {
-  background-repeat: no-repeat;
-  background-position: center;
+  font-size: 0;
 }
 </style>

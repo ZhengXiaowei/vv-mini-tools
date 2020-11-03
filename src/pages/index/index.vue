@@ -7,7 +7,8 @@
       <view class="weather-temperature">{{weather.temperature}}℃</view>
       <view class="weather-icon"
             v-if="weather.icon">
-        <weather-icon-wrap :icon="weather.icon" />
+        <weather-icon-wrap :icon="weather.icon"
+                           :night="night" />
       </view>
       <view :class="['weather-dress-recommend', textClass]"
             v-if="weather_dress_rec">
@@ -29,7 +30,8 @@
             :key="future.date">
         <text>{{future.week}}</text>
         <weather-icon-wrap size="120"
-                           :icon="future.icon" />
+                           :icon="future.icon"
+                           :night="night" />
         <text>{{future.temperature}}℃</text>
       </view>
     </view>
@@ -61,7 +63,6 @@ import { isFridayToday } from "@/helper";
 import { formatWeatherInfo } from "@/helper/format";
 import { NavList } from "@/helper/page-config";
 import { AppData } from "@/types/app";
-import { isNight } from "../../helper/index";
 
 const Index = defineComponent({
   components: {
@@ -76,6 +77,7 @@ const Index = defineComponent({
         top: `${app?.StatusBar}px`,
         height: `${app?.CustomBar}rpx`,
       },
+      night: app?.isNight,
       pageBg: app?.isNight ? "night" : "light",
       textClass: app?.isNight ? "night-text" : "",
       dayText: isFridayToday(),
@@ -86,7 +88,7 @@ const Index = defineComponent({
 
     // 天气
     getWeatherInfo().then(({ result }) => {
-      let weather = formatWeatherInfo(result, app?.isNight);
+      let weather = formatWeatherInfo(result, data.night);
       data.weather = weather;
       data.weather_dress_rec = weather.index[0];
     });
