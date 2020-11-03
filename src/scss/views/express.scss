@@ -4,30 +4,64 @@ $namespace: "page-express";
   height: 20vh;
 }
 
-@include b(progress) {
-  background: #fff;
-  position: relative;
+@include b(name) {
+  height: 160px;
+  width: 90%;
+  margin: 0 auto;
   box-sizing: border-box;
+  border-radius: 10px;
+  padding: 20px;
+  @include flex($space: flex-start);
 
-  .express-name {
-    @include flex($space: center);
-
-    image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-
+  .express-info {
     text {
+      display: block;
       font-size: 32px;
       color: #333;
     }
+
+    .number {
+      font-size: 28px;
+    }
   }
 
+  image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
+
+@include b(progress) {
+  position: relative;
+  box-sizing: border-box;
+
   .progress-list {
+    background: #fff;
+
     .cu-time-wrap {
       @include flex($direction: column, $space: center);
+    }
+  }
+
+  .result-not-found {
+    width: 90vw;
+    margin: 0 auto;
+    height: 100%;
+    font-size: 0;
+    border-radius: 10px;
+    @include flex($direction: column, $space: center);
+
+    image {
+      width: 256px;
+      height: 256px;
+      margin-bottom: 40px;
+    }
+
+    text {
+      color: #666;
+      font-size: 28px;
     }
   }
 }
