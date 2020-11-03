@@ -1,0 +1,59 @@
+$namespace: "page-driving-question";
+
+@include b(wrap) {
+  font-size: 0;
+
+  .question-title .action {
+    font-size: 28px;
+    padding: 30px 0;
+  }
+
+  image {
+    width: 100vw;
+    height: 300px;
+  }
+
+  .option-item {
+    box-sizing: border-box;
+    padding: 30px 40px;
+    @include flex($space: flex-start);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #f7f7f7;
+    }
+
+    .title {
+      font-size: 26px;
+      margin-left: 40px;
+    }
+  }
+
+  .answer-wrap {
+    font-size: 26px;
+    line-height: 1.8;
+
+    .cu-item {
+      padding: 30px 40px;
+    }
+
+    .answer-item {
+      @include flex($space: flex-start, $align: flex-start);
+
+      text {
+        &:first-child {
+          margin-right: 20px;
+          flex-shrink: 0;
+          margin-bottom: 20px;
+        }
+      }
+
+      &.success {
+        color: var(--green);
+      }
+
+      &.error {
+        color: var(--red);
+      }
+    }
+  }
+}

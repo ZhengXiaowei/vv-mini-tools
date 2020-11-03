@@ -90,6 +90,7 @@ const Index = defineComponent({
     getWeatherInfo().then(({ result }) => {
       let weather = formatWeatherInfo(result, data.night);
       data.weather = weather;
+      console.log(data.weather);
       data.weather_dress_rec = weather.index[0];
     });
 

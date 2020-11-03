@@ -131,11 +131,18 @@ export interface DrivingQuestion {
   option2: string;
   option3: string;
   option4: string;
+  options?: DrivingOptions[];
   answer: string;
   explain: string;
   pic: string;
   type: string;
+  question_type?: number;
   chapter: string;
+}
+
+export interface DrivingOptions {
+  value: string;
+  label: string;
 }
 
 // 天气

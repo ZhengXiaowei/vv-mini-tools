@@ -1,5 +1,11 @@
-import { ExpressItem, WeatherDailyInfo, WeatherInfo } from "@/types/api";
 import { isDate, isObject } from "./utils";
+import { DrivingOptions } from "../types/api";
+import {
+  DrivingQuestion,
+  ExpressItem,
+  WeatherDailyInfo,
+  WeatherInfo,
+} from "@/types/api";
 
 const encode = (value: string): string => {
   return encodeURIComponent(value)
@@ -57,12 +63,16 @@ export const formatURL = (url: string, params?: any): string => {
 export const formatWeatherInfo = (weather: WeatherInfo, night = false) => {
   const weather_icon_prefix = "http://normal-image.xiaovv-web.com/";
 
+  let icon = weather_icon_prefix + `${weather.img}.svg`;
+
+  if (night) icon = weather_icon_prefix + `night-${weather.img}.svg`;
+
   return {
     weather: weather.weather,
     date: weather.date,
     city: weather.city,
     week: weather.week,
-    icon: weather_icon_prefix + `${weather.img}.svg`,
+    icon: icon,
     temperature: weather.temp,
     temperature_high: weather.temphigh,
     temperature_lower: weather.templow,
@@ -143,4 +153,35 @@ const groupArrayByName = <T>(arr: T[], fn: Function) => {
   return Object.keys(groups).map(function (group) {
     return groups[group];
   });
+};
+
+/**
+ * 格式化驾考题目格式
+ * @param questions
+ */
+export const formatDrivingQuestion = (questions: DrivingQuestion[]) => {
+  const qs = questions.slice(0);
+  qs.forEach((q) => {
+    // 先判断题目类型 如果option为空则为答错题-1 否则为选择题-0
+    if (q.option1 === "") q.question_type = 1;
+    else {
+      q.question_type = 0;
+      q.options = formatOptions(q.option1, q.option2, q.option3, q.option4);
+    }
+  });
+  return qs;
+};
+
+const formatOptions = (...args: string[]): DrivingOptions[] => {
+  const result = args.map((a) => {
+    return {
+      value: splitQuestionOptionValue(a),
+      label: a,
+    };
+  });
+  return result;
+};
+
+const splitQuestionOptionValue = (str: string) => {
+  return str.split("、")[0];
 };

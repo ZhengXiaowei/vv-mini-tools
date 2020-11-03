@@ -84,12 +84,10 @@ export const askQuestion = (question: string) => {
  */
 export const getDrivingLicenseQuestion = (
   query: Partial<DrivingQuery> = {
-    type: "C1",
     subject: 1,
     pagesize: 1,
     pagenum: 1,
-    sort: "rand",
-    chapter: 1,
+    sort: "normal",
   }
 ) => {
   return axios.post<Driving>("/driverexam/query", { params: query });

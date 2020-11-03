@@ -4,6 +4,7 @@ export default {
     "pages/cook/index",
     "pages/express/index",
     "pages/driving/index",
+    "pages/driving-question-bank/index",
     "pages/ai/index",
   ],
   window: {

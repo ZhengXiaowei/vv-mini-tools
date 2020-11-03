@@ -1,0 +1,30 @@
+$namespace: "page-driving";
+
+@include b(wrap) {
+  margin-top: 200px;
+  font-size: 0;
+  @include flex($direction: column, $space: center);
+
+  image {
+    width: 256px;
+    height: 256px;
+  }
+
+  .driving-type {
+    @include flex($direction: column, $space: center);
+
+    &:first-child {
+      margin-bottom: 100px;
+    }
+
+    .btn-group {
+      width: 90vw;
+    }
+  }
+
+  .name {
+    margin-top: 20px;
+    font-size: 32px;
+    color: #333;
+  }
+}

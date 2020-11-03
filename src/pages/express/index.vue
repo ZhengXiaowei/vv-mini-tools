@@ -1,6 +1,9 @@
 <template>
-  <app-navigation is-custom
-                  bg-color="bg-gradual-blue" />
+  <app-navigation is-custom>
+    <template v-slot:content>
+      <text>我的快递到哪儿了</text>
+    </template>
+  </app-navigation>
   <view class="page-express-wrap">
     <view class="cu-form-group">
       <input type="text"

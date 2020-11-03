@@ -18,7 +18,7 @@
               @tap="onHomeTap"></text>
       </view>
       <view class="content"
-            :style="{top: style.top}">
+            :style="{top: style.top, fontSize: '26rpx'}">
         <slot name="content"></slot>
       </view>
       <slot name="right"></slot>
@@ -36,7 +36,7 @@ const AppNavigation = defineComponent({
   props: {
     bgColor: {
       type: String,
-      default: "",
+      default: "bg-gradual-blue",
     },
     isCustom: {
       type: [Boolean, String],

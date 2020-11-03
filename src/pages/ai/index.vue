@@ -1,6 +1,7 @@
 <template>
   <app-navigation class="fix-custom"
-                  is-custom />
+                  is-custom
+                  bg-color="" />
   <view class="page-ai-wrap bg-gradual-blue">
     <text class="start-notice">想问什么就问什么吧，反正我也不知道我知道什么</text>
     <image src="http://normal-image.xiaovv-web.com/normal/2020-11-03-wave.gif"
